@@ -1,6 +1,5 @@
 from flask import Flask, redirect, request, send_file
 import random
-import threading
 
 app = Flask(__name__)
 
@@ -48,5 +47,5 @@ def redirect_based_on_ua():
         return redirect('/pc.php', code=301)
 
 if __name__ == '__main__':
-    # 启动多线程处理请求
-    threading.Thread(target=app.run).start()
+    # 启动Flask应用，并设置为多线程处理请求
+    app.run(threaded=True)
